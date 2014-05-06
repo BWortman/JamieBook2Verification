@@ -15,6 +15,7 @@ namespace WebApi2Book.Web.Api.Models
         public DateTime? CompletedDate { get; set; }
         public Status Status { get; set; }
         public List<User> Assignees { get; set; }
+
         public List<Link> Links
         {
             get { return _links ?? (_links = new List<Link>()); }

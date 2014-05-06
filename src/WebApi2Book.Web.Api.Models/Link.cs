@@ -1,8 +1,4 @@
-﻿using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WebApi2Book.Web.Api.Models
+﻿namespace WebApi2Book.Web.Api.Models
 {
     public class Link
     {
