@@ -21,7 +21,7 @@ namespace WebApi2Book.Web.Api
             config.Services.Replace(typeof (IHttpControllerSelector),
                 new NamespaceHttpControllerSelector(config));
 
-            config.EnableSystemDiagnosticsTracing();
+            // config.EnableSystemDiagnosticsTracing(); // replaced by custom writer
             config.Services.Replace(typeof (ITraceWriter),
                 new SimpleTraceWriter(WebContainerManager.Get<ILogManager>()));
 
