@@ -76,6 +76,7 @@
     <Compile Include="ErrorHandling\SimpleErrorResult.cs" />
     <Compile Include="ErrorHandling\SimpleExceptionLogger.cs" />
     <Compile Include="IActionTransactionHelper.cs" />
+    <Compile Include="Security\UserAuditAttribute.cs" />
     <Compile Include="Security\UserSession.cs" />
     <Compile Include="Security\IWebUserSession.cs" />
     <Compile Include="SimpleTraceWriter.cs" />

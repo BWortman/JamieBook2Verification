@@ -6,6 +6,7 @@ namespace WebApi2Book.Web.Api.Models
     public class Task : ILinkContaining
     {
         private List<Link> _links;
+        private bool _shouldSerializeAssignees;
 
         public long? TaskId { get; set; }
         public string Subject { get; set; }
@@ -25,6 +26,16 @@ namespace WebApi2Book.Web.Api.Models
         public void AddLink(Link link)
         {
             Links.Add(link);
+        }
+
+        public void SetShouldSerializeAssignees(bool shouldSerialize)
+        {
+            _shouldSerializeAssignees = shouldSerialize;
+        }
+
+        public bool ShouldSerializeAssignees()
+        {
+            return _shouldSerializeAssignees;
         }
     }
 }
