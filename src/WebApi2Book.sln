@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi2Book.Common", "WebApi2Book.Common\WebApi2Book.Common.csproj", "{B1071C2D-6D0E-4469-871C-F1CAF3BD4CB6}"
 EndProject
@@ -30,6 +30,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi2Book.Web.Api.Tests", "WebApi2Book.Web.Api.Tests\WebApi2Book.Web.Api.Tests.csproj", "{2F643873-ED95-4D70-AE8B-65F971EA14FB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi2Book.Web.Common.Tests", "WebApi2Book.Web.Common.Tests\WebApi2Book.Web.Common.Tests.csproj", "{26C34855-CD1B-4ED8-9F4D-23E8A3719AFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateJwt", "CreateJwt\CreateJwt.csproj", "{C1579636-C4BF-4094-816B-437D6149C4E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,6 +93,10 @@ Global
 		{26C34855-CD1B-4ED8-9F4D-23E8A3719AFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26C34855-CD1B-4ED8-9F4D-23E8A3719AFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26C34855-CD1B-4ED8-9F4D-23E8A3719AFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1579636-C4BF-4094-816B-437D6149C4E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1579636-C4BF-4094-816B-437D6149C4E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1579636-C4BF-4094-816B-437D6149C4E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1579636-C4BF-4094-816B-437D6149C4E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
