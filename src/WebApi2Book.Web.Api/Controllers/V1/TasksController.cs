@@ -6,6 +6,7 @@ using WebApi2Book.Web.Api.MaintenanceProcessing;
 using WebApi2Book.Web.Api.Models;
 using WebApi2Book.Web.Common;
 using WebApi2Book.Web.Common.Routing;
+using WebApi2Book.Web.Common.Validation;
 
 namespace WebApi2Book.Web.Api.Controllers.V1
 {
@@ -15,17 +16,28 @@ namespace WebApi2Book.Web.Api.Controllers.V1
     public class TasksController : ApiController
     {
         private readonly IAddTaskMaintenanceProcessor _addTaskMaintenanceProcessor;
+        private readonly IAllTasksInquiryProcessor _allTasksInquiryProcessor;
+        private readonly IPagedDataRequestFactory _pagedDataRequestFactory;
         private readonly ITaskByIdInquiryProcessor _taskByIdInquiryProcessor;
+        private readonly IUpdateTaskMaintenanceProcessor _updateTaskMaintenanceProcessor;
 
         public TasksController(IAddTaskMaintenanceProcessor addTaskMaintenanceProcessor,
-            ITaskByIdInquiryProcessor taskByIdInquiryProcessor)
+            ITaskByIdInquiryProcessor taskByIdInquiryProcessor,
+            IUpdateTaskMaintenanceProcessor updateTaskMaintenanceProcessor,
+            IPagedDataRequestFactory pagedDataRequestFactory,
+            IAllTasksInquiryProcessor allTasksInquiryProcessor)
         {
             _addTaskMaintenanceProcessor = addTaskMaintenanceProcessor;
             _taskByIdInquiryProcessor = taskByIdInquiryProcessor;
+            _updateTaskMaintenanceProcessor = updateTaskMaintenanceProcessor;
+            _pagedDataRequestFactory = pagedDataRequestFactory;
+            _allTasksInquiryProcessor = allTasksInquiryProcessor;
         }
+
 
         [Route("", Name = "AddTaskRoute")]
         [HttpPost]
+        [ValidateModel]
         [Authorize(Roles = Constants.RoleNames.Manager)]
         public IHttpActionResult AddTask(HttpRequestMessage requestMessage, NewTask newTask)
         {
@@ -39,6 +51,26 @@ namespace WebApi2Book.Web.Api.Controllers.V1
         {
             var task = _taskByIdInquiryProcessor.GetTask(id);
             return task;
+        }
+
+        [Route("{id:long}", Name = "UpdateTaskRoute")]
+        [HttpPut]
+        [HttpPatch]
+        [ValidateTaskUpdateRequest]
+        [Authorize(Roles = Constants.RoleNames.SeniorWorker)]
+        public Task UpdateTask(long id, [FromBody] object updatedTask)
+        {
+            var task = _updateTaskMaintenanceProcessor.UpdateTask(id, updatedTask);
+            return task;
+        }
+
+        [Route("", Name = "GetTasksRoute")]
+        public PagedDataInquiryResponse<Task> GetTasks(HttpRequestMessage requestMessage)
+        {
+            var request = _pagedDataRequestFactory.Create(requestMessage.RequestUri);
+
+            var tasks = _allTasksInquiryProcessor.GetTasks(request);
+            return tasks;
         }
     }
 }

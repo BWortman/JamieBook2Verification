@@ -49,7 +49,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessRuleViolationException.cs" />
+    <Compile Include="Extensions\UriExtensions.cs" />
+    <Compile Include="PrimitiveTypeParser.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Extensions\IntExtensions.cs" />
     <Compile Include="IDateTime.cs" />
     <Compile Include="DateTimeAdapter.cs" />
     <Compile Include="Logging\ILogManager.cs" />

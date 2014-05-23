@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -39,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IPageLinkContaining.cs" />
+    <Compile Include="PagedDataInquiryResponse.cs" />
     <Compile Include="ILinkContaining.cs" />
     <Compile Include="Link.cs" />
     <Compile Include="NewTask.cs" />

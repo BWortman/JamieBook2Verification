@@ -39,6 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAllTasksQueryProcessor.cs" />
+    <Compile Include="QueryResult.cs" />
+    <Compile Include="ResultsPagingUtility.cs" />
+    <Compile Include="PagedDataRequest.cs" />
+    <Compile Include="IUpdateTaskQueryProcessor.cs" />
     <Compile Include="ITaskByIdQueryProcessor.cs" />
     <Compile Include="Exceptions\ChildObjectNotFoundException.cs" />
     <Compile Include="Exceptions\RootObjectNotFoundException.cs" />
@@ -48,6 +53,12 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="IUpdateTaskStatusQueryProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebApi2Book.Common\WebApi2Book.Common.csproj">
+      <Project>{b1071c2d-6d0e-4469-871c-f1caf3bd4cb6}</Project>
+      <Name>WebApi2Book.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
