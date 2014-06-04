@@ -25,8 +25,8 @@ namespace WebApi2Book.Web.Api
 
         private void ConfigureFormatters()
         {
-            var legacyFormatter = (MediaTypeFormatter)WebContainerManager.Get<ILegacyMessageTypeFormatter>();
-            GlobalConfiguration.Configuration.Formatters.Insert(0, legacyFormatter);
+            //var legacyFormatter = (MediaTypeFormatter)WebContainerManager.Get<ILegacyMessageTypeFormatter>();
+            //GlobalConfiguration.Configuration.Formatters.Insert(0, legacyFormatter);
         }
 
         private void RegisterHandlers()

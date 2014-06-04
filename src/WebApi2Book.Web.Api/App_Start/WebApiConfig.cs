@@ -30,15 +30,15 @@ namespace WebApi2Book.Web.Api
 
         private static void ConfigureRouting(HttpConfiguration config)
         {
-            config.Routes.MapHttpRoute(
-                name: "legacyRoute",
-                routeTemplate: "TeamTaskService.asmx",
-                defaults: null,
-                constraints: null,
-                handler: new LegacyAuthenticationMessageHandler(WebContainerManager.Get<ILogManager>())
-                {
-                    InnerHandler = new LegacyMessageHandler { InnerHandler = new HttpControllerDispatcher(config) }
-                });
+            //config.Routes.MapHttpRoute(
+            //    name: "legacyRoute",
+            //    routeTemplate: "TeamTaskService.asmx",
+            //    defaults: null,
+            //    constraints: null,
+            //    handler: new LegacyAuthenticationMessageHandler(WebContainerManager.Get<ILogManager>())
+            //    {
+            //        InnerHandler = new LegacyMessageHandler { InnerHandler = new HttpControllerDispatcher(config) }
+            //    });
 
             var constraintsResolver = new DefaultInlineConstraintResolver();
             constraintsResolver.ConstraintMap.Add("apiVersionConstraint", typeof(ApiVersionConstraint));
