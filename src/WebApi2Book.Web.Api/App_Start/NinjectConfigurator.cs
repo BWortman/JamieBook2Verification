@@ -18,6 +18,7 @@ using WebApi2Book.Data.SqlServer;
 using WebApi2Book.Data.SqlServer.Mapping;
 using WebApi2Book.Data.SqlServer.QueryProcessors;
 using WebApi2Book.Web.Api.AutoMappingConfiguration;
+using WebApi2Book.Web.Api.Controllers.V1;
 using WebApi2Book.Web.Api.InquiryProcessing;
 using WebApi2Book.Web.Api.LinkServices;
 using WebApi2Book.Web.Api.MaintenanceProcessing;
@@ -50,6 +51,8 @@ namespace WebApi2Book.Web.Api
 
             container.Bind<IAddTaskMaintenanceProcessor>().To<AddTaskMaintenanceProcessor>().InRequestScope();
             container.Bind<IAddTaskQueryProcessor>().To<AddTaskQueryProcessor>().InRequestScope();
+
+            container.Bind<ITasksControllerDependencyBlock>().To<TasksControllerDependencyBlock>().InRequestScope();
 
             container.Bind<ITaskByIdQueryProcessor>().To<TaskByIdQueryProcessor>().InRequestScope();
             container.Bind<IUpdateTaskStatusQueryProcessor>().To<UpdateTaskStatusQueryProcessor>().InRequestScope();
