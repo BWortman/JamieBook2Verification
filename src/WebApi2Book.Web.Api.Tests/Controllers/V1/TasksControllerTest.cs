@@ -1,7 +1,6 @@
 ﻿// TasksControllerTest.cs
 // Copyright Jamie Kurtz, Brian Wortman 2014.
 
-using System.Net.Http;
 using NUnit.Framework;
 using WebApi2Book.Data;
 using WebApi2Book.Web.Api.Controllers.V1;
@@ -26,14 +25,14 @@ namespace WebApi2Book.Web.Api.Tests.Controllers.V1
         [Test]
         public void GetTasks_returns_correct_response()
         {
-            HttpRequestMessage requestMessage = HttpRequestMessageFactory.CreateRequestMessage();
+            var requestMessage = HttpRequestMessageFactory.CreateRequestMessage();
             var request = new PagedDataRequest(1, 25);
             var response = new PagedDataInquiryResponse<Task>();
 
             _mockBlock.PagedDataRequestFactoryMock.Setup(x => x.Create(requestMessage.RequestUri)).Returns(request);
             _mockBlock.AllTasksInquiryProcessorMock.Setup(x => x.GetTasks(request)).Returns(response);
 
-            PagedDataInquiryResponse<Task> actualResponse = _controller.GetTasks(requestMessage);
+            var actualResponse = _controller.GetTasks(requestMessage);
 
             Assert.AreSame(response, actualResponse);
         }
