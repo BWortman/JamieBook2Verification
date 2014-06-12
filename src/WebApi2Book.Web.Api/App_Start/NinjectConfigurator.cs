@@ -15,6 +15,7 @@ using WebApi2Book.Data.SqlServer.Mapping;//
 using WebApi2Book.Data.SqlServer.QueryProcessors;//
 using WebApi2Book.Web.Api.AutoMappingConfiguration;//
 using WebApi2Book.Web.Api.MaintenanceProcessing;//
+using WebApi2Book.Web.Api.Security;//
 using WebApi2Book.Web.Common; //
 using WebApi2Book.Web.Common.Security;//
 
@@ -38,6 +39,7 @@ namespace WebApi2Book.Web.Api
 
             container.Bind<IAddTaskQueryProcessor>().To<AddTaskQueryProcessor>().InRequestScope();
             container.Bind<IAddTaskMaintenanceProcessor>().To<AddTaskMaintenanceProcessor>().InRequestScope();
+            container.Bind<IBasicSecurityService>().To<BasicSecurityService>().InSingletonScope();
         }
 
         private void ConfigureAutoMapper(IKernel container)
