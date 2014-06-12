@@ -18,14 +18,23 @@ namespace WebApi2Book.Web.Api.Controllers.V1
         private readonly IAddTaskMaintenanceProcessor _addTaskMaintenanceProcessor;
         private readonly ITaskByIdInquiryProcessor _taskByIdInquiryProcessor;
         private readonly IUpdateTaskMaintenanceProcessor _updateTaskMaintenanceProcessor;
+        private readonly IPagedDataRequestFactory _pagedDataRequestFactory;
+        private readonly IAllTasksInquiryProcessor _allTasksInquiryProcessor;
+
 
         public TasksController(IAddTaskMaintenanceProcessor addTaskMaintenanceProcessor,
             ITaskByIdInquiryProcessor taskByIdInquiryProcessor,
-                IUpdateTaskMaintenanceProcessor updateTaskMaintenanceProcessor)
+                IUpdateTaskMaintenanceProcessor updateTaskMaintenanceProcessor,
+            IPagedDataRequestFactory pagedDataRequestFactory,
+             IAllTasksInquiryProcessor allTasksInquiryProcessor
+)
         {
             _addTaskMaintenanceProcessor = addTaskMaintenanceProcessor;
             _taskByIdInquiryProcessor = taskByIdInquiryProcessor;
             _updateTaskMaintenanceProcessor = updateTaskMaintenanceProcessor;
+            _pagedDataRequestFactory = pagedDataRequestFactory;
+            _allTasksInquiryProcessor = allTasksInquiryProcessor;
+
         }
 
         [Route("{id:long}", Name = "UpdateTaskRoute")]
@@ -57,5 +66,15 @@ namespace WebApi2Book.Web.Api.Controllers.V1
             var task = _taskByIdInquiryProcessor.GetTask(id);
             return task;
         }
+
+        [Route("", Name = "GetTasksRoute")]
+        public PagedDataInquiryResponse<Task> GetTasks(HttpRequestMessage requestMessage)
+        {
+            var request = _pagedDataRequestFactory.Create(requestMessage.RequestUri);
+
+            var tasks = _allTasksInquiryProcessor.GetTasks(request);
+            return tasks;
+        }
+
     }
 }
